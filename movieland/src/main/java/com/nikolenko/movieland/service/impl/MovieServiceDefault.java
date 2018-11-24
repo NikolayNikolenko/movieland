@@ -1,6 +1,6 @@
 package com.nikolenko.movieland.service.impl;
 
-import com.nikolenko.movieland.dao.jdbc.mapper.MovieDao;
+import com.nikolenko.movieland.dao.MovieDao;
 import com.nikolenko.movieland.entity.Movie;
 import com.nikolenko.movieland.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +19,10 @@ public class MovieServiceDefault implements MovieService {
 
     public List<Movie> getAll() {
         return movieDao.getAllMovies();
+    }
+
+    @Override
+    public List<Movie> getRandom() {
+        return movieDao.getRandomMovies();
     }
 }

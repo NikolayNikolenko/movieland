@@ -1,11 +1,10 @@
 package com.nikolenko.movieland.dao.jdbc;
 
-import com.nikolenko.movieland.dao.jdbc.mapper.MovieDao;
+import com.nikolenko.movieland.dao.MovieDao;
 import com.nikolenko.movieland.entity.Movie;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -42,5 +41,14 @@ public class JdbcMovieDaoTestIT {
         assertEquals(expectedMovie.getRating(), actualMovie.getRating(), 0.1);
         assertEquals(expectedMovie.getPrice(), actualMovie.getPrice(), 0.1);
         assertEquals(expectedMovie.getPicturePath(), actualMovie.getPicturePath());
+    }
+
+    @Test
+    public void getRandomMovies() {
+        List<Movie> actualMovieList = movieDao.getAllMovies();
+        assertEquals(3, actualMovieList.size());
+        for (Movie movie:actualMovieList) {
+            assertNotNull(movie.getNameRussian());
+        }
     }
 }

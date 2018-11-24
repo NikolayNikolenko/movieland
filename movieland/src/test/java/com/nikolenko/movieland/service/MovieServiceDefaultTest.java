@@ -1,6 +1,7 @@
 package com.nikolenko.movieland.service;
 
-import com.nikolenko.movieland.dao.jdbc.mapper.MovieDao;
+import com.nikolenko.movieland.dao.MovieDao;
+import com.nikolenko.movieland.dao.jdbc.JdbcMovieDao;
 import com.nikolenko.movieland.entity.Movie;
 import com.nikolenko.movieland.service.impl.MovieServiceDefault;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -53,4 +55,5 @@ public class MovieServiceDefaultTest {
         }
 
     }
+
 }
