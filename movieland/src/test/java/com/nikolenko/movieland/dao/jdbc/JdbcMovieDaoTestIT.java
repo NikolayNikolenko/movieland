@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 public class JdbcMovieDaoTestIT {
     @Autowired
     private MovieDao movieDao;
+
     @Test
     public void getAllMovies() {
         Movie expectedMovie = new Movie();

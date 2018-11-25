@@ -5,3 +5,6 @@ INSERT INTO movie_poster (movie_id, poster_url) VALUES (1, 'https://images-na.ss
 INSERT INTO movie_poster (movie_id, poster_url) VALUES (2, 'https://images-na.ssl-images-amazon.com/images/M/MV5BZjA0OWVhOTAtYWQxNi00YzNhLWI4ZjYtNjFjZTEyYjJlNDVlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1._SY209_CR0,0,140,209_.jpg');
 INSERT INTO movie_poster (movie_id, poster_url) VALUES (3, 'https://images-na.ssl-images-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1._SY209_CR2,0,140,209_.jpg');
 
+INSERT INTO genre (genre_id, genre_name) VALUES (1, 'драма');
+INSERT INTO genre (genre_id, genre_name) VALUES (2, 'криминал');
+INSERT INTO genre (genre_id, genre_name) VALUES (3, 'фентези');

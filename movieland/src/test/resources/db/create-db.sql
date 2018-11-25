@@ -25,3 +25,9 @@ CREATE TABLE IF NOT EXISTS  movie_poster
 )
 ;
 
+CREATE TABLE IF NOT EXISTS genre
+(
+	genre_id  INTEGER IDENTITY PRIMARY KEY,
+	genre_name VARCHAR(400)
+)
+;

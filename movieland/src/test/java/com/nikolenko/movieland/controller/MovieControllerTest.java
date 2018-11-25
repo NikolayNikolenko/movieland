@@ -34,14 +34,13 @@ public class MovieControllerTest extends AbstractJUnit4SpringContextTests {
     @Autowired
     private MovieService movieService;
 
-    private Movie movie;
+    private Movie movie = new Movie();
 
     @Before
     public void setUp() {
         Mockito.reset(movieService);
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 
-        movie = new Movie();
         movie.setId(1);
         movie.setNameRussian("Список Шиндлера");
         movie.setNameNative("Schindler's List");
