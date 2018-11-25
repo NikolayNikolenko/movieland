@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <configuration>
+        <appender name="FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>log/movieland.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <!-- rollover daily -->
+                <fileNamePattern>log/movieland-%d{yyyy-MM-dd}.log%i</fileNamePattern>
+                <!-- each file should be at most 5MB, keep 200 days worth of history, but at most 1GB -->
+                <maxFileSize>1KB</maxFileSize>
+                <maxHistory>200</maxHistory>
+                <totalSizeCap>1GB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="DEBUG">
+            <appender-ref ref="FILE_APPENDER" />
+        </root>
+
+    </configuration>
+
+
