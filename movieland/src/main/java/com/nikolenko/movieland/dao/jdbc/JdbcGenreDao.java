@@ -40,4 +40,5 @@ public class JdbcGenreDao  implements GenreDao {
     public void setGetAllGenreSQL(String getAllGenreSQL) {
         this.getAllGenreSQL = getAllGenreSQL;
     }
+
 }
