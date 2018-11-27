@@ -15,4 +15,7 @@
     <bean id="movieService" class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="com.nikolenko.movieland.service.MovieService" />
     </bean>
+    <bean id="genreService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.nikolenko.movieland.service.GenreService" />
+    </bean>
 </beans>
