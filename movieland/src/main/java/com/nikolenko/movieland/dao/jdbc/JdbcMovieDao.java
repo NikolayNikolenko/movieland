@@ -46,7 +46,7 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getMoviesByGenre(int genreId) {
         log.info("Start query to get random movies from DB");
         long startTime = System.currentTimeMillis();
-        List<Movie> movies = jdbcTemplate.query(getMoviesByGenreSQL, new Object[]{genreId}, MOVIE_ROW_MAPPER);
+        List<Movie> movies = jdbcTemplate.query(getMoviesByGenreSQL, MOVIE_ROW_MAPPER, genreId) ;
         log.info("Finish query to get random movies from DB. It took {} ms", System.currentTimeMillis() - startTime);
         return movies;
 
