@@ -13,7 +13,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
     @RunWith(SpringJUnit4ClassRunner.class)
     @ContextConfiguration(locations = {"file:src/main/resources/spring/root-context.xml", "file:src/main/webapp/WEB-INF/movieland-servlet.xml", "classpath:/spring/test-context.xml"})
-
     public class JdbcGenreDaoTestIT {
         @Autowired
         private GenreDao genreDao;
