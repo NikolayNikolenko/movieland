@@ -16,7 +16,7 @@ import java.util.List;
 public class JdbcMovieDao implements MovieDao {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    private static MovieRowMapper movieRowMapper = new MovieRowMapper();
+    private static final MovieRowMapper movieRowMapper = new MovieRowMapper();
     private JdbcTemplate jdbcTemplate;
 
     private String getAllMovieSQL;
