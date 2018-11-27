@@ -9,6 +9,8 @@
 
     <import resource="query-context.xml"/>
 
+    <context:property-placeholder location="classpath:db/application.properties" />
+
     <context:component-scan base-package="com.nikolenko.movieland">
         <context:exclude-filter type="regex" expression="com\.nikolenko\.movieland\.controller\..*"/>
     </context:component-scan>
@@ -24,6 +26,10 @@
         <property name="url" value="${datasource.url}" />
         <property name="username" value="${datasource.username}" />
         <property name="password" value="${datasource.password}"  />
+        <property name="maxTotal" value="${datasource.poolMaxTotal}" />
+        <property name="defaultQueryTimeout" value="${datasource.defaultQueryTimeout}" />
+
+
     </bean>
 
 </beans>

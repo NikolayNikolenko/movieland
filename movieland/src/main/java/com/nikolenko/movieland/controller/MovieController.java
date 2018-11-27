@@ -16,10 +16,17 @@ import java.util.List;
     public class MovieController {
         @Autowired
         private MovieService movieService;
+
         @RequestMapping(method = RequestMethod.GET, path = "/movie", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
         @ResponseBody
-        public List<Movie> getAllMovies() {
+        public List<Movie> getAll() {
             return movieService.getAll();
+        }
+
+        @RequestMapping(method = RequestMethod.GET, path = "/movie/random", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        @ResponseBody
+        public List<Movie> getRandom() {
+            return movieService.getRandom();
         }
 
         public MovieService getMovieService() {
