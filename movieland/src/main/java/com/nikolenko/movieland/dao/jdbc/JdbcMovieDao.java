@@ -16,11 +16,12 @@ import java.util.List;
 public class JdbcMovieDao implements MovieDao {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
-    private static MovieRowMapper movieRowMapper = new MovieRowMapper();
+    private static final MovieRowMapper MOVIE_ROW_MAPPER = new MovieRowMapper();
     private JdbcTemplate jdbcTemplate;
 
     private String getAllMovieSQL;
     private String getRandomMovieSQL;
+    private String getMoviesByGenreSQL;
 
     public JdbcMovieDao() {
     }
@@ -28,7 +29,7 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getAllMovies() {
         log.info("Start query to get all movies from DB");
         long startTime = System.currentTimeMillis();
-        List<Movie> movies = jdbcTemplate.query(getAllMovieSQL, movieRowMapper);
+        List<Movie> movies = jdbcTemplate.query(getAllMovieSQL, MOVIE_ROW_MAPPER);
         log.info("Finish query to get all movies from DB. It took {} ms", System.currentTimeMillis() - startTime);
         return movies;
     }
@@ -36,9 +37,19 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getRandomMovies() {
         log.info("Start query to get random movies from DB");
         long startTime = System.currentTimeMillis();
-        List<Movie> movies = jdbcTemplate.query(getRandomMovieSQL, movieRowMapper);
+        List<Movie> movies = jdbcTemplate.query(getRandomMovieSQL, MOVIE_ROW_MAPPER);
         log.info("Finish query to get random movies from DB. It took {} ms", System.currentTimeMillis() - startTime);
         return movies;
+    }
+
+    @Override
+    public List<Movie> getMoviesByGenre(int genreId) {
+        log.info("Start query to get random movies from DB");
+        long startTime = System.currentTimeMillis();
+        List<Movie> movies = jdbcTemplate.query(getMoviesByGenreSQL, new Object[]{genreId}, MOVIE_ROW_MAPPER);
+        log.info("Finish query to get random movies from DB. It took {} ms", System.currentTimeMillis() - startTime);
+        return movies;
+
     }
 
     @Autowired
@@ -56,4 +67,8 @@ public class JdbcMovieDao implements MovieDao {
         this.getRandomMovieSQL = getRandomMovieSQL;
     }
 
+    @Autowired
+    public void setGetMoviesByGenreSQL(String getMoviesByGenreSQL) {
+        this.getMoviesByGenreSQL = getMoviesByGenreSQL;
+    }
 }

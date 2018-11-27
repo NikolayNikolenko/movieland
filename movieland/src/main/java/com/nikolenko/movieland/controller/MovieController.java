@@ -4,9 +4,8 @@ import com.nikolenko.movieland.entity.Movie;
 import com.nikolenko.movieland.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
     @RestController
@@ -29,5 +28,9 @@ import java.util.List;
             return movieService.getRandom();
         }
 
+        @RequestMapping(method = RequestMethod.GET, path = "/genre/{genreId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        public List<Movie> getMoviesByGenre(@PathVariable("genreId") long genreId) {
+            return movieService.getMoviesByGenre((int)genreId);
+        }
     }
 

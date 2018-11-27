@@ -31,3 +31,10 @@ CREATE TABLE IF NOT EXISTS genre
 	genre_name VARCHAR(400)
 )
 ;
+
+CREATE TABLE IF NOT EXISTS movie_genre
+(
+	movie_id INTEGER,
+	genre_id INTEGER
+)
+;
