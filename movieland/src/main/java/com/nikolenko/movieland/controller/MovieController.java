@@ -29,7 +29,7 @@ import java.util.List;
         }
 
         @RequestMapping(method = RequestMethod.GET, path = "/genre/{genreId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-        public List<Movie> getMoviesByGenre(@PathVariable("genreId") long genreId) {
+        public List<Movie> getMoviesByGenre(@PathVariable("genreId") int genreId) {
             return movieService.getMoviesByGenre((int)genreId);
         }
     }
