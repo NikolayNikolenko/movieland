@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import java.util.Collections;
@@ -64,7 +65,8 @@ public class MovieControllerTest extends AbstractJUnit4SpringContextTests {
                 .andExpect(jsonPath("$[0].yearOfRelease", equalTo(1993)))
                 .andExpect(jsonPath("$[0].rating", equalTo(8.7)))
                 .andExpect(jsonPath("$[0].price", equalTo(150.5)))
-                .andExpect(jsonPath("$[0].picturePath", equalTo("https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1._SX140_CR0,0,140,209_.jpg")));
+                .andExpect(jsonPath("$[0].picturePath", equalTo("https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1._SX140_CR0,0,140,209_.jpg")))
+                .andDo(MockMvcResultHandlers.print());
     }
     @Test
     public void testGetRandomMovies() throws Exception {
@@ -100,5 +102,24 @@ public class MovieControllerTest extends AbstractJUnit4SpringContextTests {
                 .andExpect(jsonPath("$[0].price", equalTo(150.5)))
                 .andExpect(jsonPath("$[0].picturePath", equalTo("https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1._SX140_CR0,0,140,209_.jpg")));
     }
+    @Test
+    public void testGetAllMoviesSortedByPrice() throws Exception {
+        // Prepare
+        // When
+        when(movieService.getAll()).thenReturn(Collections.singletonList(movie));
+        // Then
+        mockMvc.perform(get("/v1/movie").content("{\"price\": \"desc\"}"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(jsonPath("$[0].id", equalTo(1)))
+                .andExpect(jsonPath("$[0].nameRussian", equalTo("Список Шиндлера")))
+                .andExpect(jsonPath("$[0].nameNative", equalTo("Schindler's List")))
+                .andExpect(jsonPath("$[0].yearOfRelease", equalTo(1993)))
+                .andExpect(jsonPath("$[0].rating", equalTo(8.7)))
+                .andExpect(jsonPath("$[0].price", equalTo(150.5)))
+                .andExpect(jsonPath("$[0].picturePath", equalTo("https://images-na.ssl-images-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1._SX140_CR0,0,140,209_.jpg")));
+    }
+
 
 }

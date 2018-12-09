@@ -33,7 +33,6 @@ import static org.junit.Assert.assertEquals;
             assertEquals(expectedGenre.getId(), actualGenre.getId());
             assertEquals(expectedGenre.getName(), actualGenre.getName());
 
-
             actualGenreList = genreDao.getAll();
             assertEquals(3, actualGenreList.size());
             index = actualGenreList.indexOf(expectedGenre);

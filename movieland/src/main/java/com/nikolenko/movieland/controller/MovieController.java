@@ -1,5 +1,7 @@
 package com.nikolenko.movieland.controller;
 
+import com.nikolenko.movieland.dao.entity.SortOrderParameter;
+import com.nikolenko.movieland.dao.entity.SortOrderType;
 import com.nikolenko.movieland.entity.Movie;
 import com.nikolenko.movieland.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,15 @@ import java.util.List;
         }
 
         @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-        public List<Movie> getAll() {
-            return movieService.getAll();
+        public List<Movie> getAll(@RequestParam(name = "price", required = false) String orderByPrice, @RequestParam(name = "rating", required = false) String orederByRating ) {
+            if (orderByPrice==null && orederByRating==null ){
+                return movieService.getAll();
+            }
+
+            SortOrderParameter sortOrderParameter = new SortOrderParameter();
+            if (orderByPrice != null) { sortOrderParameter.add("price", SortOrderType.getSortOrderTypeByName(orderByPrice));}
+            if (orederByRating != null) { sortOrderParameter.add("movie_rate", SortOrderType.getSortOrderTypeByName(orederByRating));}
+            return movieService.getAll(sortOrderParameter);
         }
 
         @RequestMapping(method = RequestMethod.GET, path = "/random", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
