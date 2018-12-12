@@ -5,10 +5,12 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="getAllMovieSQL" class="java.lang.String">
-        <constructor-arg value="select m.movie_id, m.movie_name_russian, m.movie_name_native, m.year_of_release, m.movie_rate, m.price, p.poster_url  from movie_land.movie m join movie_land.movie_poster p on (p.movie_id = m.movie_id)"/>
+        <constructor-arg
+                value="select m.movie_id, m.movie_name_russian, m.movie_name_native, m.year_of_release, m.movie_rate, m.price, p.poster_url  from movie_land.movie m join movie_land.movie_poster p on (p.movie_id = m.movie_id)"/>
     </bean>
     <bean id="getRandomMovieSQL" class="java.lang.String">
-        <constructor-arg value="select m.movie_id, m.movie_name_russian, m.movie_name_native, m.year_of_release, m.movie_rate, m.price, p.poster_url  from movie_land.movie m join movie_land.movie_poster p on (p.movie_id = m.movie_id) order by random() limit ${database.query.movie.random.count}"/>
+        <constructor-arg
+                value="select m.movie_id, m.movie_name_russian, m.movie_name_native, m.year_of_release, m.movie_rate, m.price, p.poster_url  from movie_land.movie m join movie_land.movie_poster p on (p.movie_id = m.movie_id) order by random() limit ${database.query.movie.random.count}"/>
     </bean>
     <bean id="getMoviesByGenreSQL" class="java.lang.String">
         <constructor-arg value="select m.movie_id, m.movie_name_russian, m.movie_name_native, m.year_of_release, m.movie_rate, m.price, p.poster_url

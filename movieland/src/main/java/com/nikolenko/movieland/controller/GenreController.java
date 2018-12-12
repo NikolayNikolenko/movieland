@@ -2,12 +2,8 @@ package com.nikolenko.movieland.controller;
 
 import com.nikolenko.movieland.entity.Genre;
 import com.nikolenko.movieland.service.GenreService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +16,7 @@ public class GenreController {
     private GenreService genreService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/v1/genre", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Genre> getAll () {
+    public List<Genre> getAll() {
         return genreService.getAll();
     }
 

@@ -20,9 +20,7 @@ import java.util.Collections;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/resources/spring/root-context.xml", "file:src/main/webapp/WEB-INF/movieland-servlet.xml", "classpath:/spring/test-context.xml"})
@@ -47,7 +45,7 @@ public class GenreControllerTest {
     }
 
     @Test
-    public void testGetAllMovies() throws Exception {
+    public void testGetAll() throws Exception {
         // Prepare
         // When
         when(genreService.getAll()).thenReturn(Collections.singletonList(genre));
