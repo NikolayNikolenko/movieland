@@ -10,21 +10,23 @@ import static org.junit.Assert.assertNotEquals;
 
 public class SortOrderTypeTest {
     @Test
-    public void testGetSortOrderType(){
-        assertEquals("asc", SortOrderType.Asc.getSortOrderTypeName());
-        assertEquals( "desc", SortOrderType.Desc.getSortOrderTypeName());
-        assertNotEquals("Asc", SortOrderType.Asc.getSortOrderTypeName());
-    };
+    public void testGetSortOrderType() {
+        assertEquals("asc", SortOrderType.ASC.getSortOrderTypeName());
+        assertEquals("desc", SortOrderType.DESC.getSortOrderTypeName());
+        assertNotEquals("Asc", SortOrderType.ASC.getSortOrderTypeName());
+    }
+
+    ;
 
     @Test(expected = NoSuchElementException.class)
     public void testGetSortOrderTypeByNameException() {
-        assertNotEquals(SortOrderType.Asc, SortOrderType.getSortOrderTypeByName("bsc"));
+        assertNotEquals(SortOrderType.ASC, SortOrderType.getSortOrderTypeByName("bsc"));
     }
 
     @Test
-    public void testGetSortOrderTypeByName () {
-        assertEquals(SortOrderType.Asc, SortOrderType.getSortOrderTypeByName("Asc"));
-        assertEquals(SortOrderType.Asc, SortOrderType.getSortOrderTypeByName("asc"));
+    public void testGetSortOrderTypeByName() {
+        assertEquals(SortOrderType.ASC, SortOrderType.getSortOrderTypeByName("Asc"));
+        assertEquals(SortOrderType.ASC, SortOrderType.getSortOrderTypeByName("asc"));
     }
 
 }

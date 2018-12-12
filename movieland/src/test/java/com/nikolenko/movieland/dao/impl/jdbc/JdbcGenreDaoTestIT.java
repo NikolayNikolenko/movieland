@@ -12,35 +12,36 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-    @RunWith(SpringJUnit4ClassRunner.class)
-    @ContextConfiguration(locations = {"file:src/main/resources/spring/root-context.xml", "file:src/main/webapp/WEB-INF/movieland-servlet.xml", "classpath:/spring/test-context.xml"})
-    public class JdbcGenreDaoTestIT {
-        @Autowired
-        @Qualifier("CachedGenreDao")
-        private GenreDao genreDao;
 
-        @Test
-        public void getAllGenres() {
-            Genre expectedGenre = new Genre();
-            expectedGenre.setId(1);
-            expectedGenre.setName("драма");
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"file:src/main/resources/spring/root-context.xml", "file:src/main/webapp/WEB-INF/movieland-servlet.xml", "classpath:/spring/test-context.xml"})
+public class JdbcGenreDaoTestIT {
+    @Autowired
+    @Qualifier("CachedGenreDao")
+    private GenreDao genreDao;
 
-            List<Genre> actualGenreList = genreDao.getAll();
-            assertEquals(3, actualGenreList.size());
-            int index = actualGenreList.indexOf(expectedGenre);
-            Genre actualGenre = actualGenreList.get(index);
+    @Test
+    public void getAllGenres() {
+        Genre expectedGenre = new Genre();
+        expectedGenre.setId(1);
+        expectedGenre.setName("драма");
 
-            assertEquals(expectedGenre.getId(), actualGenre.getId());
-            assertEquals(expectedGenre.getName(), actualGenre.getName());
+        List<Genre> actualGenreList = genreDao.getAll();
+        assertEquals(3, actualGenreList.size());
+        int index = actualGenreList.indexOf(expectedGenre);
+        Genre actualGenre = actualGenreList.get(index);
 
-            actualGenreList = genreDao.getAll();
-            assertEquals(3, actualGenreList.size());
-            index = actualGenreList.indexOf(expectedGenre);
-            actualGenre = actualGenreList.get(index);
+        assertEquals(expectedGenre.getId(), actualGenre.getId());
+        assertEquals(expectedGenre.getName(), actualGenre.getName());
 
-            assertEquals(expectedGenre.getId(), actualGenre.getId());
-            assertEquals(expectedGenre.getName(), actualGenre.getName());
+        actualGenreList = genreDao.getAll();
+        assertEquals(3, actualGenreList.size());
+        index = actualGenreList.indexOf(expectedGenre);
+        actualGenre = actualGenreList.get(index);
 
-        }
+        assertEquals(expectedGenre.getId(), actualGenre.getId());
+        assertEquals(expectedGenre.getName(), actualGenre.getName());
+
     }
+}
 

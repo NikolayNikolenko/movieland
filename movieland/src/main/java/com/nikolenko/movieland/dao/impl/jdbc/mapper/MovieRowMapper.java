@@ -2,6 +2,7 @@ package com.nikolenko.movieland.dao.impl.jdbc.mapper;
 
 import com.nikolenko.movieland.entity.Movie;
 import org.springframework.jdbc.core.RowMapper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

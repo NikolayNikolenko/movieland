@@ -15,15 +15,15 @@ public class SortOrderParameter {
     public SortOrderParameter() {
         sortOrderParameters = new ArrayList<>();
         validationList = new ArrayList<>();
-        validationList.add(new Pair<String, SortOrderType>("movie_rate", SortOrderType.Desc));
-        validationList.add(new Pair<String, SortOrderType>("price", SortOrderType.Asc));
-        validationList.add(new Pair<String, SortOrderType>("price", SortOrderType.Desc));
+        validationList.add(new Pair<String, SortOrderType>("movie_rate", SortOrderType.DESC));
+        validationList.add(new Pair<String, SortOrderType>("price", SortOrderType.ASC));
+        validationList.add(new Pair<String, SortOrderType>("price", SortOrderType.DESC));
     }
 
     public void add(String fieldName, SortOrderType sortOrderType) {
         Pair<String, SortOrderType> parameter = new Pair<>(fieldName.trim().toLowerCase(), sortOrderType);
-        for (Pair<String, SortOrderType> validator: validationList) {
-            if (validator.equals(parameter)){
+        for (Pair<String, SortOrderType> validator : validationList) {
+            if (validator.equals(parameter)) {
                 sortOrderParameters.add(parameter);
                 return;
             }

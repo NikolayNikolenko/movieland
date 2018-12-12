@@ -5,11 +5,15 @@ import com.nikolenko.movieland.entity.Movie;
 
 import java.util.List;
 
-public interface MovieDao{
+public interface MovieDao {
 
     public List<Movie> getAllMovies();
+
     public List<Movie> getAllMovies(SortOrderParameter sortOrderParameter);
+
     public List<Movie> getRandomMovies();
+
     public List<Movie> getMoviesByGenre(int genreId);
+
     public List<Movie> getMoviesByGenre(int genreId, SortOrderParameter sortOrderParameter);
 }

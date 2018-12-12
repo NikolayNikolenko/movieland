@@ -6,14 +6,14 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 public enum SortOrderType {
-    Asc("asc"), Desc("desc");
+    ASC("asc"), DESC("desc");
 
-    private static final Map<String,SortOrderType> lookup = new HashMap<String,SortOrderType>();
+    private static final Map<String, SortOrderType> lookup = new HashMap<String, SortOrderType>();
 
     private final String sortOrderTypeName;
 
     static {
-        for(SortOrderType sortOrderType : EnumSet.allOf(SortOrderType.class))
+        for (SortOrderType sortOrderType : EnumSet.allOf(SortOrderType.class))
             lookup.put(sortOrderType.name().toLowerCase(), sortOrderType);
 
     }

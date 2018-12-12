@@ -8,10 +8,10 @@ import static org.junit.Assert.assertEquals;
 
 public class QuerySortSQLBuilderTest {
     @Test
-    public void testGetQueryTextWithTwoSortOrderParameters  () {
+    public void testGetQueryTextWithTwoSortOrderParameters() {
         SortOrderParameter sortOrderParameter = new SortOrderParameter();
-        sortOrderParameter.add("price", SortOrderType.Asc);
-        sortOrderParameter.add("movie_rate", SortOrderType.Desc);
+        sortOrderParameter.add("price", SortOrderType.ASC);
+        sortOrderParameter.add("movie_rate", SortOrderType.DESC);
         QuerySortSQLBuilder querySortSQLBuilder = new QuerySortSQLBuilder();
         assertEquals("select * from table order by price asc, movie_rate desc",
                 querySortSQLBuilder.getQueryText("select * from table", sortOrderParameter));
@@ -19,9 +19,9 @@ public class QuerySortSQLBuilderTest {
     }
 
     @Test
-    public void testGetQueryTextWithOneSortOrderParameter  () {
+    public void testGetQueryTextWithOneSortOrderParameter() {
         SortOrderParameter sortOrderParameter = new SortOrderParameter();
-        sortOrderParameter.add("price", SortOrderType.Asc);
+        sortOrderParameter.add("price", SortOrderType.ASC);
         QuerySortSQLBuilder querySortSQLBuilder = new QuerySortSQLBuilder();
         assertEquals("select * from table order by price asc",
                 querySortSQLBuilder.getQueryText("select * from table", sortOrderParameter));

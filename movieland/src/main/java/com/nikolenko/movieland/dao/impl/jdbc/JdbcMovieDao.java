@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-
 import java.util.List;
 
 @Repository
@@ -61,7 +60,7 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getMoviesByGenre(int genreId) {
         log.info("============= Start query to get movies by genre from DB");
         long startTime = System.currentTimeMillis();
-        List<Movie> movies = jdbcTemplate.query(getMoviesByGenreSQL, MOVIE_ROW_MAPPER, genreId) ;
+        List<Movie> movies = jdbcTemplate.query(getMoviesByGenreSQL, MOVIE_ROW_MAPPER, genreId);
         log.info("============ Finish query to get movies by genre from DB. It took {} ms", System.currentTimeMillis() - startTime);
         return movies;
     }
@@ -70,7 +69,7 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getMoviesByGenre(int genreId, SortOrderParameter sortOrderParameter) {
         log.info("Start query to get sort movies by gente from DB");
         long startTime = System.currentTimeMillis();
-        List<Movie> movies = jdbcTemplate.query(querySortSQLBuilder.getQueryText(getMoviesByGenreSQL, sortOrderParameter), MOVIE_ROW_MAPPER, genreId) ;
+        List<Movie> movies = jdbcTemplate.query(querySortSQLBuilder.getQueryText(getMoviesByGenreSQL, sortOrderParameter), MOVIE_ROW_MAPPER, genreId);
         log.info("Finish query to get sort movies by genre from DB. It took {} ms", System.currentTimeMillis() - startTime);
         return movies;
     }

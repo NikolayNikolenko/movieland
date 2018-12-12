@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/resources/spring/root-context.xml", "file:src/main/webapp/WEB-INF/movieland-servlet.xml", "classpath:/spring/test-context.xml"})
@@ -48,7 +49,7 @@ public class JdbcMovieDaoTestIT {
     public void getRandomMovies() {
         List<Movie> actualMovieList = movieDao.getAllMovies();
         assertEquals(3, actualMovieList.size());
-        for (Movie movie:actualMovieList) {
+        for (Movie movie : actualMovieList) {
             assertNotNull(movie.getNameRussian());
         }
     }

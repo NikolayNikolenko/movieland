@@ -85,9 +85,9 @@ public class Movie {
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
         return id == movie.id
-               && nameRussian.equals(movie.nameRussian)
-               && nameNative.equals(movie.nameNative)
-               && yearOfRelease == movie.yearOfRelease;
+                && nameRussian.equals(movie.nameRussian)
+                && nameNative.equals(movie.nameNative)
+                && yearOfRelease == movie.yearOfRelease;
     }
 
     @Override
